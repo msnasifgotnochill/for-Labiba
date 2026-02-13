@@ -1,0 +1,107 @@
+{
+  "kind": "build_request",
+  "title": "Romantic Valentine Surprise Page for Labiba (Yes/No with evasive No + Good Choice meme)",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a single-page interactive Valentine prompt UI that prominently asks: \"Labiba, will you be my Valentine?\" and shows two options: \"Yes\" and \"No\" using a romantic pink-and-white theme.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Create an interactive web page as a surprise for my girlfriend. her name is Labiba . The page should be simple, romantic-themed, and have only one purpose: to ask her to be my Valentine with mentioning her name .\nThere should be two options: Yes or No.\n... The page should be themed\nromantically with a pink and white color scheme"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The page displays the exact question text in English including the name \"Labiba\".",
+        "Two clearly labeled buttons are visible: \"Yes\" and \"No\".",
+        "The page styling is consistently pink-and-white and visually romantic (e.g., soft gradients, hearts, rounded shapes), without introducing extra app features or navigation.",
+        "The experience works in Chrome on iPad (responsive layout; no desktop-only interactions required to proceed)."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement the \"No\" option as an evasive button: when the user attempts to interact with it (hover/pointer enter and on touch attempt), the button moves to a new position within the viewport/container so it cannot be clicked.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "When she hovers her cursor over No, it should move away so she cannot click it, forcing her to click only on Yes."
+        ]
+      },
+      "acceptanceCriteria": [
+        "On desktop browsers, moving the cursor toward/onto the \"No\" button causes it to relocate before a click can land.",
+        "On touch devices (iPad), attempting to tap the \"No\" button causes it to relocate (e.g., on touchstart/pointerdown) so it is effectively unclickable.",
+        "The \"No\" button always remains visible on-screen (does not move off-screen) and does not overlap the \"Yes\" button.",
+        "The \"Yes\" button remains clickable and stable."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "When the user clicks \"Yes\", replace the prompt/buttons state with a celebratory view that displays a meme image containing the text: \"Good choice\".",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "When she clicks Yes, show her a meme image telling her “Good choice"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Clicking \"Yes\" transitions to a new state that shows a meme-style image.",
+        "The meme image visibly includes the exact English text \"Good choice\" within the image itself (not only as HTML text).",
+        "After clicking \"Yes\", the \"No\" evasive interaction is no longer relevant (the prompt/buttons are hidden or clearly de-emphasized)."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Add any required generated images to the frontend as static assets and render them directly from the frontend (do not serve images through the backend).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "show her a meme image telling her “Good choice"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated image files are placed under: frontend/public/assets/generated.",
+        "The UI loads the image via a static path (e.g., /assets/generated/...) and displays it reliably in Chrome on iPad.",
+        "No backend endpoints are introduced for image hosting."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for all user-facing text.",
+    "Frontend must be implemented in the existing React + TypeScript + Tailwind template (do not introduce a separate standalone HTML file flow).",
+    "Do not modify files under frontend/src/components/ui or any other immutable paths listed in SYSTEM_CONTEXT."
+  ],
+  "nonGoals": [
+    "Implementing user accounts or authentication.",
+    "Adding multi-page routing, messaging, or data persistence.",
+    "Integrating third-party services or external APIs."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Meme-style image with the text \"Good choice\" (valentine-good-choice-meme.dim_1200x1200.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}
